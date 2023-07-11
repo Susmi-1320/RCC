@@ -11,6 +11,8 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Welcome from '../screens/welcome/Welcome';
 import Settings from '../screens/settings/Settings';
 import Profile from '../screens/profile/Profile';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 const HomeStack = createStackNavigator();
@@ -18,30 +20,66 @@ const HomeStack = createStackNavigator();
 const HomeStackNavigation = () => {
   return (
     <HomeStack.Navigator screenOptions={{headerShown: false}}>
-      <HomeStack.Screen name="home" component={HomeScreen} />
-      <HomeStack.Screen name="details" component={DetailsScreen} />
+      <HomeStack.Screen
+        name="home"
+        component={HomeScreen}
+        headerShown={false}
+      />
+      <HomeStack.Screen
+        name="details"
+        component={DetailsScreen}
+        headerShown={false}
+      />
       <HomeStack.Screen name="map" component={Map} />
     </HomeStack.Navigator>
   );
 };
 const TabNavigation = () => {
   return (
-    <Tab.Navigator initialRouteName="Home" screenOptions={{headerShown: false}}>
+    <Tab.Navigator
+      initialRouteName="Home"
+      screenOptions={({route}) => ({
+        headerShown: false,
+        tabBarIcon: ({color, size}) => {
+          let iconName;
+          if (route.name === 'Home') {
+            iconName = 'home';
+          } else if (route.name === 'Settings') {
+            iconName = 'settings';
+          }
+          return <MaterialIcons name={iconName} color={color} size={size} />;
+        },
+      })}
+      tabBarOptions={{
+        activeTintColor: 'orange',
+        inactiveTintColor: 'gray',
+      }}>
       <Tab.Screen
-        name="homestacknavigation"
+        name="Home"
         component={HomeStackNavigation}
-        options={{title: 'Home'}}
-        tabBarIcon
+        options={{
+          tabBarIcon: ({color, size}) => (
+            <MaterialIcons name="home" color={color} size={size} />
+          ),
+        }}
       />
       <Tab.Screen
-        name="profile"
+        name="Profile"
         component={Profile}
-        options={{title: 'Profile'}}
+        options={{
+          tabBarIcon: ({color, size}) => (
+            <MaterialIcons name="account-circle" color={color} size={size} />
+          ),
+        }}
       />
       <Tab.Screen
-        name="account"
+        name="Account"
         component={Settings}
-        options={{title: 'Settings'}}
+        options={{
+          tabBarIcon: ({color, size}) => (
+            <MaterialIcons name="settings" color={color} size={size} />
+          ),
+        }}
       />
     </Tab.Navigator>
   );
@@ -54,9 +92,8 @@ const Navigation = () => {
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="welcome" component={Welcome} />
         <Stack.Screen name="TabNavigation" component={TabNavigation} />
-        {/* <Stack.Screen name="Map" component={Map} /> */}
+        <Stack.Screen name="Map" component={Map} />
       </Stack.Navigator>
-      {/* <BottomNavigator /> */}
     </NavigationContainer>
   );
 };

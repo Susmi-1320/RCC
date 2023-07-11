@@ -134,7 +134,6 @@ const style = StyleSheet.create({
     marginHorizontal: 20,
     borderRadius: 10,
   },
-
   priceTag: {
     height: 40,
     alignItems: 'center',
