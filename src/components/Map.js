@@ -1,10 +1,13 @@
 import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {SafeAreaView, Text, View} from 'react-native';
+import globalStyles from '../assets/global/globalStyles';
 const Map = () => {
   return (
-    <View>
-      <Text>Map</Text>
-    </View>
+    <SafeAreaView style={[globalStyles.whiteBg]}>
+      <View style={[globalStyles.header]}>
+        <Text>Map</Text>
+      </View>
+    </SafeAreaView>
   );
 };
 

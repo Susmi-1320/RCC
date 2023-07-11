@@ -1,11 +1,13 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
+import globalStyle from '../../assets/global/globalStyles';
+import Header from '../../components/Header';
 
 const Profile = () => {
   return (
-    <View>
-      <Text>Profile</Text>
-    </View>
+    <SafeAreaView style={[globalStyle.whiteBg]}>
+      <Header title='Profile'/>
+    </SafeAreaView>
   );
 };
 

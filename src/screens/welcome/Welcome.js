@@ -1,26 +1,29 @@
-import {Button, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
+import Button from '../../components/Button';
 
 export const Welcome = ({navigation}) => {
   return (
-    <View style={styles.container}>
-      <Text>Welcom To RCC Hotels</Text>
+    <>
+      <View style={styles.container}>
+        <Text style={{textAlign: 'center'}}>Welcom To RCC Hotels</Text>
+      </View>
       <Button
         title="Go to RCC Home"
         onPress={() => {
           navigation.push('TabNavigation');
         }}
       />
-    </View>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 
