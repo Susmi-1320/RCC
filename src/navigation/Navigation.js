@@ -13,6 +13,8 @@ import Settings from '../screens/settings/Settings';
 import Profile from '../screens/profile/Profile';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import Search from '../screens/search/Search';
+import Booking from '../screens/bookings/Booking';
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 const HomeStack = createStackNavigator();
@@ -64,20 +66,29 @@ const TabNavigation = () => {
         }}
       />
       <Tab.Screen
+        name="Search"
+        component={Search}
+        options={{
+          tabBarIcon: ({color, size}) => (
+            <MaterialIcons name="search" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Booking"
+        component={Booking}
+        options={{
+          tabBarIcon: ({color, size}) => (
+            <MaterialIcons name="book-online" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
         name="Profile"
         component={Profile}
         options={{
           tabBarIcon: ({color, size}) => (
             <MaterialIcons name="account-circle" color={color} size={size} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Account"
-        component={Settings}
-        options={{
-          tabBarIcon: ({color, size}) => (
-            <MaterialIcons name="settings" color={color} size={size} />
           ),
         }}
       />
